@@ -1,0 +1,41 @@
+base:
+  seed: 1111
+  batch_size: 1
+  num_workers: 8
+  train_mode: regression
+  key_eval: MAE
+  missing_rate_eval_test: 0.0
+
+dataset:
+  datasetName: sims
+  dataPath: /home/qluai/JHP/dataset/CH-SIMS/Processed/unaligned_39.pkl
+
+optimizer:
+  lr: 0.0001
+  weight_decay: 0.0001
+  bert_lr_scale: 0.1
+
+model:
+  feature_extractor:
+    bert_pretrained: 'bert-base-chinese'
+    input_length: [39, 55, 400]    # language, video, audio
+    token_length: [8, 8, 8]
+    heads: 8
+    input_dims: [768, 709, 33]
+    hidden_dims: [128, 128, 128]
+    depth: 2
+
+  prediction:
+    out_dim: 1
+
+  ddl:
+    queue_size: 512
+    momentum: 0.99
+
+  tcmr:
+    hidden_dim: 256
+    dropout: 0.1
+
+  qagf:
+    fusion_hidden_dim: 256
+    dropout: 0.1
