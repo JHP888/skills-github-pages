@@ -16,7 +16,7 @@ Our main contributions can be summarized as follows:
 
 ## The Framework
 
-<div align=center><img src="Framework.png" width="50%"></img></div>
+<div align=center><img src="Framework.png" width="100%"></img></div>
 
 The framework of LDCNet. 
 
