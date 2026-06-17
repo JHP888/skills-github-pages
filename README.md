@@ -1,6 +1,7 @@
 # LDCNet: Language-dominant Dual-space Collaboration Network for Multimodal Sentiment Analysis
 
 <p float="left"><img src="https://img.shields.io/badge/python-v3.9+-red"> <img src="https://img.shields.io/badge/pytorch-v2.6+-blue">
+
 ## The motivation.
 
 <div align=center><img src="Introduction.png" width="50%"></img></div>
