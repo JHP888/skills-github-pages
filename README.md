@@ -1,54 +1,63 @@
-<header>
+# LDCNet: Language-dominant Dual-space Collaboration Network for Multimodal Sentiment Analysis
 
-<!--
-  <<< Author notes: Course header >>>
-  Include a 1280×640 image, course title in sentence case, and a concise description in emphasis.
-  In your repository settings: enable template repository, add your 1280×640 social image, auto delete head branches.
-  Add your open source license, GitHub uses MIT license.
--->
+<p float="left"><img src="https://img.shields.io/badge/python-v3.9+-red"> <img src="https://img.shields.io/badge/pytorch-v2.6+-blue">
 
-# GitHub Pages
+## The motivation.
 
-_Create a site or blog from your GitHub repositories with GitHub Pages._
+![image-20260617142943298](README.assets/image-20260617142943298.png)
 
-</header>
+## Main Contributions
 
-<!--
-  <<< Author notes: Step 1 >>>
-  Choose 3-5 steps for your course.
-  The first step is always the hardest, so pick something easy!
-  Link to docs.github.com for further explanations.
-  Encourage users to open new tabs for steps!
--->
+Our main contributions can be summarized as follows:
 
-## Step 1: Enable GitHub Pages
+- **Proposed Framework:** We propose a Language-dominant Dual-space Collaboration Network (LDCNet) for multimodal sentiment analysis, which decomposes multimodal representations into modality-invariant and modality-specific spaces to reduce modality heterogeneity.
+- **Adaptive Cross-Modality Interaction:** We design an Adaptive Cross-Modality Interaction (ACMI) module to enhance semantic consistency among modality-invariant representations and alleviate redundancy and conflicts in shared multimodal features.
+- **Hierarchical Language Gate:** We propose a Hierarchical Language Gate (HLG) module to construct language-guided hyper-modality representations, enabling audio and visual modalities to provide complementary cues under the guidance of language.
+- **Experimental Validation:** Extensive experiments on MOSI and MOSEI demonstrate that LDCNet outperforms representative state-of-the-art methods, while ablation studies verify the effectiveness of each proposed component.
 
-_Welcome to GitHub Pages and Jekyll :tada:!_
+## The Framework
 
-The first step is to enable GitHub Pages on this [repository](https://docs.github.com/en/get-started/quickstart/github-glossary#repository). When you enable GitHub Pages on a repository, GitHub takes the content that's on the main branch and publishes a website based on its contents.
+![image-20260617142108306](README.assets/image-20260617142108306.png)
+The framework of LDCNet. 
 
-### :keyboard: Activity: Enable GitHub Pages
 
-1. Open a new browser tab, and work on the steps in your second tab while you read the instructions in this tab.
-1. Under your repository name, click **Settings**.
-1. Click **Pages** in the **Code and automation** section.
-1. Ensure "Deploy from a branch" is selected from the **Source** drop-down menu, and then select `main` from the **Branch** drop-down menu.
-1. Click the **Save** button.
-1. Wait about _one minute_ then refresh this page (the one you're following instructions from). [GitHub Actions](https://docs.github.com/en/actions) will automatically update to the next step.
-   > Turning on GitHub Pages creates a deployment of your repository. GitHub Actions may take up to a minute to respond while waiting for the deployment. Future steps will be about 20 seconds; this step is slower.
-   > **Note**: In the **Pages** of **Settings**, the **Visit site** button will appear at the top. Click the button to see your GitHub Pages site.
+## Usage
 
-<footer>
+### Prerequisites
+- Python 3.9.19
+- CUDA 12.2
 
-<!--
-  <<< Author notes: Footer >>>
-  Add a link to get support, GitHub status page, code of conduct, license link.
--->
+### Installation
+- Create a conda environment. Please make sure you have installed conda before.
+```
+conda create -n LDCNet python==3.9.19
+```
+- Activate the built LDCNet environment.
+```
+conda activate LDCNet
+```
+- Install Pytorch with CUDA
+```
+pip install torch==2.1.1 torchvision==0.16.1 torchaudio==2.1.1 --index-url https://download.pytorch.org/whl/cu121
+```
+### Datasets
+Data files (containing processed MOSI, MOSEI datasets) can be downloaded from [here](https://drive.google.com/drive/folders/1BBadVSptOe4h8TWchkhWZRLJw8YG_aEi?usp=sharing). 
+You can first build and then put the downloaded datasets into `./dataset` directory and revise the path in `./config/config.json`. For example, if the processed the MOSI dataset is located in `./dataset/MOSI/aligned_50.pkl`. Please make sure "dataset_root_dir": "./dataset" and "featurePath": "MOSI/aligned_50.pkl".
+Please note that the meta information and the raw data are not available due to the privacy of YouTube content creators. For more details, please follow the [official website](https://github.com/ecfm/CMU-MultimodalSDK) of these datasets.
 
----
+### Run the Codes
+- Training
 
-Get help: [Post in our discussion board](https://github.com/orgs/skills/discussions/categories/github-pages) &bull; [Review the GitHub status page](https://www.githubstatus.com/)
+You can first set the training dataset name in `./train.py` as "mosei" or "mosi", and then run:
+```
+python train.py
+```
+By default, the trained model will be saved in `./pt` directory. You can change this in `train.py`.
 
-&copy; 2023 GitHub &bull; [Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.md) &bull; [MIT License](https://gh.io/mit)
+- Testing
 
-</footer>
+You can first set the testing dataset name in `./test.py` as "mosei" or "mosi", and then test the trained model:
+```
+python test.py
+```
+
