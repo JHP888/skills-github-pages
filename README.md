@@ -1,10 +1,9 @@
 # LDCNet: Language-dominant Dual-space Collaboration Network for Multimodal Sentiment Analysis
 
 <p float="left"><img src="https://img.shields.io/badge/python-v3.9+-red"> <img src="https://img.shields.io/badge/pytorch-v2.6+-blue">
-
 ## The motivation.
 
-![image-20260617142943298](README.assets/image-20260617142943298.png)
+<div align=center><img src="Introduction.png" width="50%"></img></div>
 
 ## Main Contributions
 
@@ -17,7 +16,8 @@ Our main contributions can be summarized as follows:
 
 ## The Framework
 
-![image-20260617142108306](README.assets/image-20260617142108306.png)
+<div align=center><img src="Framework.png" width="50%"></img></div>
+
 The framework of LDCNet. 
 
 
